@@ -1,5 +1,6 @@
 ﻿using Domain.Entities;
 using Domain.Enums;
+using Domain.Interfaces;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Text;
 
 namespace Infraestructure.Productos
 {
-    public class ProductoModel
+    public class ProductoModel: IProductoModel
     {
         private Producto[] productos;
 
