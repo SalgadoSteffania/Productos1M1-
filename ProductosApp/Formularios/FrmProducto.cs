@@ -1,4 +1,6 @@
-﻿using Domain.Entities;
+﻿using AppCore.Interfaces;
+using AppCore.Services;
+using Domain.Entities;
 using Domain.Enums;
 using Infraestructure.Productos;
 using System;
@@ -15,9 +17,11 @@ namespace ProductosApp.Formularios
 {    
     public partial class FrmProducto : Form
     {
-        public ProductoModel PModel { get; set; }
-        public FrmProducto()
+        
+        public IProductoService Services;
+        public FrmProducto(IProductoService _Service)
         {
+            this.Services = _Service;
             InitializeComponent();
         }
 
@@ -27,13 +31,14 @@ namespace ProductosApp.Formularios
                                               .Cast<object>()
                                               .ToArray()
                                           );
+            cmbMetodosInventario.Items.AddRange(Enum.GetValues(typeof(UnidadMedida)).Cast<object>().ToArray()); 
         }
 
         private void BtnOk_Click(object sender, EventArgs e)
         {
             Producto p = new Producto()
             {
-                Id = PModel.GetLastProductoId() + 1,
+                Id = Services.GetLastProductoId() + 1,
                 Nombre = txtNombre.Text,
                 Descripcion = txtDesc.Text,
                 Existencia = (int)nudExist.Value,
@@ -42,7 +47,7 @@ namespace ProductosApp.Formularios
                 UnidadMedida = (UnidadMedida)cmbMeasureUnit.SelectedIndex
             };
 
-            PModel.Add(p);
+            Services.Add(p);
 
             Dispose();
         }
