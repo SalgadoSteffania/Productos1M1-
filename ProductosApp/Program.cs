@@ -1,14 +1,12 @@
 ﻿using AppCore.Interfaces;
 using AppCore.Services;
-using Autofac;
 using Domain.Interfaces;
 using Infraestructure.Empleados;
 using ProductosApp.Formularios;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
+
 
 namespace ProductosApp
 {
