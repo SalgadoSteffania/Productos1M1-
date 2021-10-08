@@ -9,5 +9,13 @@ namespace AppCore.Interfaces
     {
         Empleado FindById(int id);
         int GetLastEmpleadoId();
+
+        void create(Empleado e);
+        int Update(Empleado e);
+        bool Delete(Empleado e);
+        
+
+
+
     }
 }
